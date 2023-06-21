@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<style>
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit] {
+      width: 100%;
+      background-color: #f8fc00;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type=submit]:hover {
+      background-color: #f9d920;
+    }
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+</style>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drugs Classification</title>
+  </head>
+  <body>
+    <div>
+    <form action="{{ url_for('prediction')}}" method="post">
+        <label for="Age">Age:</label>
+        <input type="text" id="Age" name="Age" placeholder="default value">
+
+        <label for="Sex">Sex:</label>
+        <input type="text" id="Sex" name="Sex" placeholder="Sex[F=0 & M=1]">
+
+        <label for="BP">BP:</label>
+        <input type="text" id="BP" name="BP" placeholder="BP[High=0 or Low=1 or Normal=2]">
+
+        <label for="Cholesterol">Cholesterol:</label>
+        <input type="text" id="Cholesterol" name="Cholesterol" placeholder="Cholesterol[High=0 or Low=1 or Normal=2]">
+
+        <label for="Na_to_K">Na_to_K:</label>
+        <input type="text" id="Na_to_K" name="Na_to_K" placeholder="Na_to_K">
+
+        <button type="submit">Predict the Drug Class</button>
+    </div>
+    <div>
+      <!-- check if result is None or not -->
+      {% if result is not none %}
+          <h3 >Prediction is {{result}}</h3>
+      {% endif %}
+
+    </div>
+  </body>
+</html>
